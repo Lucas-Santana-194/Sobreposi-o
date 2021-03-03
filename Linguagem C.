@@ -1,0 +1,71 @@
+#include <stdio.h>
+
+int main(void) {
+
+
+  int I1;
+  int I2;
+  int VI1;
+  int VI2;
+  
+  //int Itotal;
+
+
+  //Declarações de variaveis
+float e_E1, e_E2, e_R1, e_R2, e_R3;
+float  s_VR1, s_VR2, s_VR3;
+double s_Itotal;
+//entrada do valor
+printf("Valor da fonte 1 E1:");
+scanf ("%f",&e_E1);
+
+//entrada do valor
+printf("Valor da fonte 2 E2:");
+scanf ("%f",&e_E2);
+
+//entrada do valor
+printf("Valor de R1:");
+scanf ("%f",&e_R1);
+
+//entrada do valor 
+printf("Valor de R2:");
+scanf ("%f",&e_R2);
+
+//entrada do valor 
+printf("Valor de R3:");
+scanf ("%f",&e_R3);
+
+//atribuição: 
+ I1= (e_E1 / (e_R1+((e_R2 * e_R3)/(e_R2 + e_R3))));
+ 
+ VI1= (e_E1)-(I1 *e_R1);
+ 
+ I2= (e_E2 / (e_R3+((e_R1 * e_R2)/(e_R1 + e_R2))));
+ 
+ VI2= (e_E2)-(I2 * e_R3);
+
+s_Itotal= VI1+VI2;
+
+
+ if (s_Itotal == 0)
+ {
+   printf("Erro de Calculo:");
+ }
+
+else {
+ 
+printf("s_Itotal: %f [A]\n",
+s_Itotal);
+
+//printf("s_VR1: %f [V]\n",
+//s_VR1);
+
+//printf("s_VR2: %f [V]\n",
+//s_VR2);
+
+//printf("s_VR3: %f [V]\n",
+//s_VR3);
+
+}
+  return 0;
+}
