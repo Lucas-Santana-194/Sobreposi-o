@@ -14,7 +14,7 @@ int main(void) {
   //Declarações de variaveis
 float e_E1, e_E2, e_R1, e_R2, e_R3;
 float  s_VR1, s_VR2, s_VR3;
-double s_Itotal;
+float  s_Itotal;
 //entrada do valor
 printf("Valor da fonte 1 E1:");
 scanf ("%f",&e_E1);
@@ -44,7 +44,7 @@ scanf ("%f",&e_R3);
  
  VI2= (e_E2)-(I2 * e_R3);
 
-s_Itotal= VI1+VI2;
+ s_Itotal= VI1+VI2;
 
 
  if (s_Itotal == 0)
