@@ -1,20 +1,23 @@
+Linguagem C.
+
 #include <stdio.h>
 
 int main(void) {
 
+//NOMES PARA O CALCULO
 
-  int I1;
-  int I2;
-  int VI1;
-  int VI2;
+float I1; //CORRENTE I1
+float VI1; //TENSAO QUE SOBRA I1
+float IA1; // CORRENTE PARA SOMAR I1 + I2
+float I2; //CORRENTE I2
+float VI2; //TENSAO QUE SOBRA I2
+float IA2;// CORRENTE PARA SOMAR I2 + I1
   
-  //int Itotal;
-
-
-  //Declarações de variaveis
-float e_E1, e_E2, e_R1, e_R2, e_R3;
+//Declarações de variaveis
+float  e_E1, e_E2, e_R1, e_R2, e_R3;
 float  s_VR1, s_VR2, s_VR3;
-float  s_Itotal;
+float s_Itotal;
+
 //entrada do valor
 printf("Valor da fonte 1 E1:");
 scanf ("%f",&e_E1);
@@ -36,17 +39,33 @@ printf("Valor de R3:");
 scanf ("%f",&e_R3);
 
 //atribuição: 
- I1= (e_E1 / (e_R1+((e_R2 * e_R3)/(e_R2 + e_R3))));
  
- VI1= (e_E1)-(I1 *e_R1);
+   //CORRENTE TOTAL
+
+ I1= (e_E1 / ((e_R1+((e_R2 * e_R3)/(e_R2 + e_R3)))));
  
- I2= (e_E2 / (e_R3+((e_R1 * e_R2)/(e_R1 + e_R2))));
+ VI1= ((e_E1)-(I1 *e_R1));
  
- VI2= (e_E2)-(I2 * e_R3);
+ IA1= (VI1/e_R2); 
+ 
+ I2= (e_E2 / ((e_R3+((e_R2 * e_R1)/(e_R2+ e_R1)))));
+ 
+ VI2= ((e_E2)-(I2 * e_R3));
+ 
+ IA2= (VI2/e_R2);
 
- s_Itotal= VI1+VI2;
+ s_Itotal= IA1+IA2;
 
-
+//ACIMA CALCULO DA CORRRENTE
+ 
+ //ABAIXO TENSAO DE CADA RESISTOR
+  
+   s_VR1= s_Itotal*e_R1;
+  
+   s_VR2= s_Itotal*e_R2;
+  
+   s_VR3= s_Itotal*e_R3;
+ 
  if (s_Itotal == 0)
  {
    printf("Erro de Calculo:");
@@ -57,14 +76,14 @@ else {
 printf("s_Itotal: %f [A]\n",
 s_Itotal);
 
-//printf("s_VR1: %f [V]\n",
-//s_VR1);
+printf("s_VR1: %f [V]\n",
+s_VR1);
 
-//printf("s_VR2: %f [V]\n",
-//s_VR2);
+printf("s_VR2: %f [V]\n",
+s_VR2);
 
-//printf("s_VR3: %f [V]\n",
-//s_VR3);
+printf("s_VR3: %f [V]\n",
+s_VR3);
 
 }
   return 0;
